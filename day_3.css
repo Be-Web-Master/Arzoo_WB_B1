@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    
+}
+body{
+    max-width: 400px;
+    max-height: 100vh;
+    /* padding: 5vw 10vw; */
+    background: url(https://images.unsplash.com/photo-1514477917009-389c76a86b68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=767&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+h1{
+    margin-bottom: 10px;
+    font-size: 3vw;
+}
+h3{
+    margin-bottom: 20px;
+    font-size: .7vw;
+}
+meter{
+    width: 100%;
+    /* height: 120px; */
+    margin-bottom: 20px;
+}
+form{
+    /* margin:0 auto; */
+    padding-top: 70px;
+    width: 100%;
+    height: 500px;
+    /* background-color: aquamarine; */
+    /* display: flex;
+    flex-direction: column; */
+    
+}
+input{
+    height: 30px;
+    width: 100%;
+    /* border-radius: 10px; */
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: transparent;
+}
+form>label{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+
+button{
+    width: 150px;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-bottom: 20px;
+    margin-right: 45px;
+    font-size: 1vw;
+}
+#reset{
+    position: absolute;
+    top: 86.2%;
+    left: 53%;
+    
+}
+#reset:hover{
+    background-color: rgb(228, 161, 173);
+    cursor: pointer;
+}
+#submit:hover{
+    cursor: pointer;
+    background-color: #8FB0D3;
+}
