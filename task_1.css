@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+#left{
+    height: 100%;
+    width: calc(100%/2);
+   background: url(https://images.unsplash.com/photo-1467241850596-6a0de48568da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+#right{
+    height: 100%;
+    width: calc(100%/2);
+    /* background-color: blueviolet; */
+    /* margin: 0 auto; */
+    /* display: flex; */
+    
+}
+h1{
+    margin-bottom: 10px;
+    font-size: 2vw;
+}
+form{
+    padding-top: 70px;
+    padding-left: 150px;
+    padding-bottom: 50px;
+    /* margin: 0 auto; */
+    width: 100%;
+    height: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+}
+input{
+    height: 30px;
+    width: 70%;
+    /* border-radius: 10px; */
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: transparent;
+}
+input[type="radio"]{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#label{
+    margin-bottom: 20px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+#gender{
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+#message{
+    width: 70%;
+    height: 50%;
+    border: none;
+    border-bottom: 1px solid black;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+}
+button{
+    width: 70%;
+    padding: 10px 10px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    color: aliceblue;
+    background-color: black;
+}
+/* #preferred_work{
+    margin-right: 70px;
+} */
+#frontend{
+    display: flex;
+    padding: 0 1px;
+    margin-left: 20px;
+
+}
+#backend{
+    display: flex;
+    padding: 0 1px;
+    margin-left: 20px;
+}
+#fullstack{
+    display: flex;
+    padding: 0 1px;
+    margin-left: 20px;
+}
