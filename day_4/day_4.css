@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    /* background-color: #000; */
+}
+form{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    height: 70vh;
+    width: 50vw;
+    /* background-color: aqua; */
+}
+table{
+    height: 100%;
+    width: 100%;
+    font-family: "Gilroy";
+    border: none;
+    
+
+    
+}
+table>thead>tr>th{
+    margin-left:10px ;
+    padding: 5px 5px;
+    border: none;
+    border-top: 3px solid red;
+    border-bottom: 2px dashed black;
+    border-right: 3px solid white;
+    background-color: darkslategrey;
+    color: white;
+}
+table>tbody>tr>td,
+table>thead>tr>th{
+    /* margin-left:150px; */
+    padding: 5px 5px;
+    border-bottom: 2px dashed black;
+    border-right: 3px solid white;
+}
+tbody>tr>td{
+    margin-right: 10px;
+    text-align: center;
+}
+table thead tr th:nth-child(1){
+    border: none;
+    border-top: 3px solid red;
+    border-left: 3px solid red;
+    border-bottom: 2px dashed black;
+
+}
+table thead tr th:nth-child(4){
+    border: none;
+    border-top: 3px solid red;
+    border-right: 3px solid red;
+    border-bottom: 2px dashed black;
+
+}
+table tbody tr td:nth-child(1){
+    border: none;
+    /* border-top: 3px solid red; */
+    border-left: 3px solid red;
+    border-bottom: 2px dashed black;
+}
+table tbody tr td:nth-child(4){
+    border: none;
+    /* border-top: 3px solid white; */
+    border-right: 3px solid red;
+    border-bottom: 3px dashed black;
+
+}
+table tr:nth-child(even){
+    background-color: palegoldenrod;
+}
+table tr:nth-child(odd){
+    background-color: rgba(119, 37, 37, 0.852);
+}
+tbody tr:hover{
+    cursor: pointer;
+    background-color: darkred;
+    color: white;
+}
+
+table > tbody tr:last-child > td {
+    /* border: none; */
+    border-bottom: 3px solid red;
+}
