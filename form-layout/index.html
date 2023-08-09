@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="nav">
+        <div id="nav-middle">
+            <a href="">Home</a>
+            <a href="">Products</a>
+            <a href="">Blog</a>
+            <a href="">About us</a>
+        </div>
+    </div>
+    <div id="form-div">
+        <h1>Contact Us</h1>
+        <form>
+            <div id="name">
+                <input type="text" placeholder="Firstname" name="firstname" required>
+                <input type="text" placeholder="Lastname" name="lastname" required>
+            </div>
+            <input type="email" placeholder="Email" required>
+            <input type="number" placeholder="Phone-number" required>
+            <input type="text" placeholder="Instagram Id">
+            <textarea name="Message" id="" cols="30" rows="10" placeholder="Message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="signup">
+        <div id="login-button">
+            <button id="login">Login with <i class="ri-facebook-box-fill"></i></button>
+            <button id="login">Login with <i class="ri-linkedin-box-fill"></i></button>
+        </div>
+        <button id="google">Login with <i class="ri-google-fill"></i></button>
+    </div>
+</body>
+</html>
