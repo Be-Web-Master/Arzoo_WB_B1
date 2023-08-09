@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+.container{
+    height: 700px;
+    width: 900px;
+    /* background-color: gray; */
+    /* border: 2px solid black; */
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr);
+    margin:3px auto;
+    display: grid;
+}
+.header{
+    grid-column-start: 1;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #F59794;
+}
+.left{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 10;
+    background-color: palegreen;
+}
+.right-top{
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: whitesmoke;
+}
+.right-middle{
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 3;
+    grid-row-end: 7;
+    background-color: gray;
+}
+.card1{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    background-color: #F59794;
+}
+.card2{
+    grid-column-start: 6;
+    grid-column-end: 8;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    background-color: #F59794;
+}
+.card3{
+    grid-column-start: 9;
+    grid-column-end: 11;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    background-color: #F59794;
+}
+.right-below-card{
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 7;
+    grid-row-end: 8;
+    background-color: purple;
+}
+.right-bottom-left{
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 8;
+    grid-row-end: 10;
+    background-color: plum;
+}
+.right-bottom-right{
+    grid-column-start: 7;
+    grid-column-end: 11;
+    grid-row-start: 8;
+    grid-row-end: 10;
+    background-color: pink;
+}
+.footer{
+    grid-column-start: 1;
+    grid-column-end: 11;
+    grid-row-start: 10;
+    grid-row-end: 11;
+    background-color: skyblue;
+}
+@media(max-width: 900px){
+    .container{
+        height: 700px;
+        width: 600px;
+        /* margin: auto auto; */
+        grid-template-columns: repeat(20,1fr);
+        grid-template-rows: repeat(20,1fr);
+    }
+    .header{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-color: #F59794;
+    }
+    .left{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        background-color: palegreen;
+    }
+    
+    .right-top{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 4;
+        grid-row-end: 6;
+        background-color: whitesmoke;
+    }
+   .right-middle{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 6;
+        grid-row-end: 17;
+        background-color: gray;
+    }
+    .card1{
+        grid-column-start: 9;
+        grid-column-end: 13;
+        grid-row-start: 6;
+        grid-row-end: 9;
+        background-color: #F59794;
+    }
+    .card2{
+        grid-column-start: 9;
+        grid-column-end: 13;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        background-color: #F59794;
+    }
+    .card3{
+        grid-column-start: 9;
+        grid-column-end: 13;
+        grid-row-start: 14;
+        grid-row-end: 17;
+        background-color: #F59794;
+    }
+    .right-below-card{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 17;
+        grid-row-end: 18;
+        background-color: purple;
+    }
+    .right-bottom-left{
+        grid-column-start: 1;
+        grid-column-end: 11;
+        grid-row-start: 18;
+        grid-row-end: 19;
+        background-color: plum;
+    }
+    .right-bottom-right{
+        grid-column-start: 11;
+        grid-column-end: 21;
+        grid-row-start: 18;
+        grid-row-end: 19;
+        background-color: pink;
+    }
+    .footer{
+        grid-column-start: 1;
+        grid-column-end: 21;
+        grid-row-start: 19;
+        grid-row-end: 21;
+        background-color: skyblue;
+    }
+}
