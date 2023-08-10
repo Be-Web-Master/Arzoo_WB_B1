@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+    <form>
+        <h1>Contact Us</h1>
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Name">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email">
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="Age">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password">
+        <label for="birthday">Birthday</label>
+        <input type="date" name="birthday" id="birthday">
+        <label for="country">Country</label>
+        <select name="country" id="country">
+            <option value="india">India</option>
+            <option value="uk">United Kingdom</option>
+            <option value="usa">USA</option>
+        </select>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+        <label for="gender">Gender</label>
+        <div id="gender">
+            <div id="male">
+                <input type="radio" name="gender" id="male">
+                <label for="male">Male</label>
+            </div>
+            <div id="female">
+                <input type="radio" name="gender" id="female">
+                <label for="female">Female</label>
+            </div>
+            <div id="others">
+                <input type="radio" name="gender" id="others">
+                <label for="others">Others</label>
+            </div>
+        </div>
+        <div id="checkbox">
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox">Subscribe to Newsletter</label>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
