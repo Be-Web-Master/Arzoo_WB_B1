@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+input{
+    display: none;
+}
+button{
+    height: 10vh;
+    width: 12vw;
+    background-color: rgb(127, 175, 194);
+    color: aliceblue;
+    border: none;
+    border-radius: 20px;
+    font-size: 1vw;
+}
+button:hover{
+    cursor: pointer;
+    background-color: rgb(68, 161, 198);
+
+}
