@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+/* form{
+    margin: auto;
+} */
+table{
+    height: 50vh;
+    width: 50vw;
+    /* border: 1px solid rgba(0, 0, 0, 0.337); */
+}
+thead{
+    background-color: rgb(78, 158, 190);
+    padding: 10px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.463);
+}
+tbody>tr>td{
+    border-right:1px solid black ;
+    border-bottom:1px solid black ;
+    border-left:1px solid black ;
+
+}
