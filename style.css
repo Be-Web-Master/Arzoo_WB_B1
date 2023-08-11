@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 10vh;
+    width: 12vw;
+    background-color: rgb(127, 175, 194);
+    color: aliceblue;
+    border: none;
+    border-radius: 20px;
+    font-size: 1vw;
+
+}
+.container:hover #box{
+   
+    display: flex;
+    /* opacity: 1; */
+}
+.container:hover button{
+    cursor: pointer;
+    background-color: rgb(68, 161, 198); 
+}
+#box{
+    height: 5vh;
+    width: 7vw;
+    position: absolute;
+    top: 55.5%;
+    left: 48%;
+    background-color: rgb(2, 134, 185);
+    color: aliceblue;
+    padding: 10px 30px;
+    border-radius: 10px;
+    display: none;
+    /* opacity: 0; */
+}
+#small{
+    width: 12px;
+    height: 12px;
+    background-color: rgb(2, 134, 185);
+    /* background-color: aliceblue; */
+    rotate: 45deg;
+    position: absolute;
+    top: -10%;
+    left: 45%;
+}
