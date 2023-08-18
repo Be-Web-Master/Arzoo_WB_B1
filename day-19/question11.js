@@ -13,7 +13,10 @@ const printPrimeNum = array.filter((elem)=>{
         if(elem % i === 0){
             return false;
         }
-        return elem !== 1
+        // return elem !== 1
+        else if( elem !== 1){
+            return true;
+        }
     }
 })
 console.log(printPrimeNum)
