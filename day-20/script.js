@@ -98,8 +98,76 @@
 // const color= checkColor.style.backgroundColor
 // console.log(color)
 
-// 18. Does the element with the class "list" contain an <li> element with the text "Item 2"? Print true or false. (matches)
+// **18. Does the element with the class "list" contain an <li> element with the text "Item 2"? Print true or false. (matches)
 
-const elemList = document.querySelectorAll("li")
-const check = elemList.matches("Item 2")
-console.log(check)
+// const elemList = document.getElementsByClassName("list")[0]
+// const check = document.hasChildNodes("li")
+// console.log(check)
+
+// **19. Does the element with the class "content" match a <div> tag? Print true or false. (matches)
+// got true here, matches worked, why?
+// const elem = document.getElementsByClassName("content")[0];
+// console.log(elem.matches("div"))
+
+// 20. What is the nearest ancestor of the element with the class "inner-box" that has the ID "container"? (closest)
+
+// const elem = document.getElementsByClassName("inner-box")[0];
+// const nearestAncestor = elem.closest("#container");
+// console.log(nearestAncestor)
+
+// 21. Print the first child element of the <body> element. (document.body)
+
+// const firstChild = document.body.firstElementChild;
+// console.log(firstChild)
+
+// 22. Print the number of child elements within the <body> element. (document.body.children)
+
+// const numOfChild = document.body.children;
+// console.log(numOfChild)
+
+// 23. What is the tag name of the first child element of the <body> element? (document.body.firstChild.tagName)
+
+// const tag_Name = document.body.firstElementChild.tagName;
+// console.log(tag_Name)
+
+// **24. What is the class name of the first child element of the <body> element? (document.body.firstChild.className)
+// should get div? but not!
+
+// const class_Name = document.body.firstElementChild.className;
+// console.log(class_Name)
+
+// 25. Print the innerHTML of the element with the class "content". (innerHTML)
+
+// const elem = document.getElementsByClassName("content")[0];
+// const getInnerHtml = elem.innerHTML;
+// console.log(getInnerHtml)
+
+// 26. Print the innerText of the element with the class "content". (innerText)
+
+// const elem = document.getElementsByClassName("content")[0];
+// const getInnerText = elem.innerText;
+// console.log(getInnerText)
+
+// 27. Get the value of the "type" attribute of the input element with the ID "name". (getAttribute())
+
+// const inputElem = document.getElementById("name");
+// const getValue = inputElem.getAttribute("type");
+// console.log(getValue)
+
+// 28. Set the "placeholder" attribute of the input element with the ID "name" to "Enter your full name". (setAttribute())
+
+// const inpElem = document.getElementById("name");
+// const setValue = inpElem.setAttribute("placeholder","Enter your full name");
+// console.log(inpElem);
+
+// 29. Does the input element with the ID "name" have the "placeholder" attribute? Print true or false. (hasAttribute())
+
+// const inpElem2 = document.getElementById("name");
+// const hasElem = inpElem.hasAttribute("placeholder");
+// console.log(hasElem)
+
+// 30. Remove the "value" attribute from the input element with the ID "name". (removeAttribute())
+
+// const inpElem = document.getElementById("name");
+// const removeElem = inpElem.removeAttribute("value");
+// console.log(inpElem)
