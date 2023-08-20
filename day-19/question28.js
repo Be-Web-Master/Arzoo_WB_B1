@@ -14,6 +14,7 @@ let persons = [
     { name: 'Jennifer', age: 32 }
 ];
 let agedPersons, areEligible;
+
 for(let i=0;i<persons.length;i++){
     
     agedPersons = persons.filter((i)=>{
