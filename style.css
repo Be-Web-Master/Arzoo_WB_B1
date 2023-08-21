@@ -1,0 +1,27 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+  }
+  form {
+    margin: 20px;
+  }
+  label {
+    display: block;
+    margin: 8px 0.5px;
+  }
+  
+  .gender {
+    display: flex;
+  }
+  p {
+    color: red;
+  }
+  button {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(14, 155, 210);
+    color: aliceblue;
+    padding: 10px 10px;
+  }
