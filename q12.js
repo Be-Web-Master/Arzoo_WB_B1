@@ -2,20 +2,17 @@
 
 const button = document.getElementById("button");
 const modal = document.getElementById("modal");
+let flag = 0;
 
 button.addEventListener("click", () => {
-  button.innerText = "Close Modal";
-  modal.style.opacity = "1";
-  closeModal();
-});
-
-function closeModal() {
-  button.addEventListener("click", () => {
+  if (flag === 0) {
+    button.innerText = "Close Modal";
+    modal.style.opacity = "1";
+    flag =1;
+  } else {
     button.innerText = "Open Modal";
     modal.style.opacity = "0";
-  });
-}
-// button.addEventListener("click", () => {
-//   button.innerText = "Open Modal";
-//   modal.style.opacity = "0";
-// });
+    flag=0;
+  }
+});
+
