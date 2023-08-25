@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+html,body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    height: 5vh;
+    width: 12vw;
+    border-radius: 5px;
+    border: 1px solid black;
+    /* margin: 20px; */
+    padding:5px 5px;
+    font-size: 1.5vw;
+}
+table{
+    height: fit-content;
+    width: fit-content;
+    /* border: 1px solid black; */
+    margin: 20px;
+    /* opacity: 0; */
+    /* padding: 10px 10px; */
+}
+thead,tbody{
+    height: 8vh;
+    width: 15vw;
+    padding: 5px 5px;
+    font-size: 1.5vw;
+}
