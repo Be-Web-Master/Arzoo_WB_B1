@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <input type="search" onkeyup="handleSearchInput(event)" name="search" id="searchInput" placeholder="Search">
+        <form onsubmit="handleAddTaskSubmit(event)">
+            <input type="number" id="idInput" name="number">
+            <button id="submitBtn" type="submit">Add</button>
+        </form>
+        <ul id="todoList">
+            <li>Todo List</li>
+        </ul>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
