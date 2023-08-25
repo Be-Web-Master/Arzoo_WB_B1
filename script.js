@@ -5,7 +5,7 @@ const searchInput = document.getElementById("searchInput");
 const GET_URL = (idInpVal) =>
   `https://jsonplaceholder.typicode.com/todos/${idInpVal}`;
 
-const liDataArray = [];
+let liDataArray = [];
 
 const fetchData = async (api) => {
   const todoDataResponse = await fetch(api);
@@ -21,12 +21,16 @@ const clearTodoList = () => {
   todoList.innerHTML = "";
 };
 
+const addLiElem = (liText)=>{
+    const liTagElem = document.createElement("li");
+    liTagElem.innerText = liText;
+    todoList.append(liTagElem);
+}
+
 const updateTodoUI = () => {
   clearTodoList();
-  for (let i = 0; i < liDataArray.length; i++) {
-    const liTagElem = document.createElement("li");
-    liTagElem.innerText = liDataArray[i];
-    todoList.append(liTagElem);
+  for (const data of liDataArray) {
+    addLiElem(data);
   }
 };
 
@@ -62,5 +66,17 @@ const handleAddTaskSubmit = async (event) => {
 };
 
 const handleSearchInput = (event) => {
-  console.log(event.target.value);
+  let dataValue = event.target.value;
+
+  clearTodoList();
+  let searchArray = liDataArray.filter((elem) => {
+    return elem.includes(dataValue);
+  });
+//   console.log(searchArray);
+  if(searchArray.length>0){
+    searchArray.map((li)=>{
+        addLiElem(li)
+    })
+  }
 };
+
