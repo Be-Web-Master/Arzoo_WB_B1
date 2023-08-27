@@ -12,25 +12,25 @@ html,body{
 }
 
 button{
-    height: 5vh;
-    width: 12vw;
+    /* height: 5vh;
+    width: 12vw; */
     border-radius: 5px;
     border: 1px solid black;
     /* margin: 20px; */
     padding:5px 5px;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 table{
-    height: fit-content;
-    width: fit-content;
+    /* height: fit-content; */
+    /* width: fit-content; */
     /* border: 1px solid black; */
     margin: 20px;
     /* opacity: 0; */
     /* padding: 10px 10px; */
 }
 thead,tbody{
-    height: 8vh;
+    height: fit-content;
     width: 15vw;
-    padding: 5px 5px;
+    padding: 10px 10px;
     font-size: 1.5vw;
 }
