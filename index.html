@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <form id="sort-form">
+        <select id="columnDropdown" name="columnsDropdown"></select>
+        <input name="sortOrder" value="Ascending" id="asc" type="radio">
+        <label for="asc">Ascending</label>
+        <input name="sortOrder" value="Descending" id="dessc" type="radio">
+        <label for="desc">Descending</label>
+        <button id="sort-btn" type="submit">Sort</button>
+    </form>
     <button id="columnBtn">Add Column</button>
 
     <table id="table" border="1">
