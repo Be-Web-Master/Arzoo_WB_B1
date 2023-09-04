@@ -3,28 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS Project 1</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>JS Project Table UI</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
   </head>
   <body>
-    <form id="sort-form">
-        <select id="columnDropdown" name="columnsDropdown"></select>
-        <input name="sortOrder" value="Ascending" id="asc" type="radio">
-        <label for="asc">Ascending</label>
-        <input name="sortOrder" value="Descending" id="dessc" type="radio">
-        <label for="desc">Descending</label>
-        <button id="sort-btn" type="submit">Sort</button>
-    </form>
-    <button id="columnBtn">Add Column</button>
+    <button type="button" id="addColumnButton">Add Column</button>
+    <button type="button" id="addRowButton">Add Row</button>
+    <button type="button" id="clearLocalData">Clear All</button>
+    <form id="sortForm">
+        <select name="columnsDropdown" class="columnsDropDown">
+        </select>
 
-    <table id="table" border="1">
-      <thead id="thead"></thead>
-      <tbody id="tbody"></tbody>
+        <input type="radio" value="ascending" name="sort" id="sort">
+        <label for="sort">Ascending</label>
+
+        <input type="radio" value="descending" name="sort" id="sort">
+        <label for="sort">Descending</label>
+        <button id="sortButton">Sort</button>
+    </form>
+
+    <table id="table">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
     </table>
-    <div class="btn">
-        <button id="rowBtn">Add Row</button>
-        <button id="clear">Clear</button>
-    </div>
   </body>
   <script src="script.js"></script>
 </html>

@@ -1,177 +1,272 @@
 const LOCAL_STORAGE_TABLE_KEY = "tableStateData";
 
+const table = document.getElementById("table");
+const tHead = document.getElementById("thead");
+const tBody = document.getElementById("tbody");
+const addRowButton = document.getElementById("addRowButton");
+const addColumnButton = document.getElementById("addColumnButton");
+const clearLocalData = document.getElementById("clearLocalData");
+const sortForm = document.getElementById("sortForm");
+const selectOption = document.querySelector(".columnsDropDown");
+
 let tableState = {
   header: [],
   body: [],
 };
 
-if (localStorage.getItem(LOCAL_STORAGE_TABLE_KEY)) {
-  // agr data milta hai to tableState ma override kr denge
-  tableState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TABLE_KEY));
-} else {
-  // vrna data set kr denge
-  localStorage.setItem(LOCAL_STORAGE_TABLE_KEY, JSON.stringify(tableState));
-}
+/**
+ * when the page loads for first-time or when it's refreshed,
+ * we check the localStorage if it has table data,
+ */
+document.addEventListener("DOMContentLoaded", syncUIWithLocalStorage);
 
-// const table = document.getElementById("table");
-const thead = document.getElementById("thead");
-const tbody = document.getElementById("tbody");
-const columnBtn = document.getElementById("columnBtn");
-columnBtn.onclick = addNewColoumn;
-const rowBtn = document.getElementById("rowBtn");
-rowBtn.onclick = addNewRow;
-const clrBtn = document.getElementById("clear");
-clrBtn.onclick = () => {
+
+
+sortForm.addEventListener("submit", sortTableByColumn);
+
+addColumnButton.addEventListener("click", addNewColumn);
+
+addRowButton.addEventListener("click", addNewRow);
+
+clearLocalData.addEventListener("click", () => {
   localStorage.clear();
-};
+  clearTableUI();
+  window.location.reload(); // refresh the UI
+});
 
-const sortingDropdown = document.getElementById("columnDropdown")
-// to  sorting table row
-const sortForm = document.getElementById('sort-form')
-sortForm.addEventListener('submit',(event)=>{
-    event.preventDefault();
-    const columnNumber = event.target.columnsDropdown.value.split("-")[1];
-    const sortingOrder = event.target.sortOrder.value
-    // const columnNumber = tableState.header.find(headerObj =>
-    //     headerObj.columnName === selectedColumnName
-    // )
-console.log({columnNumber})
-    tableState.body.sort((obj1,obj2)=>{
-        if(obj1.cellDetails[columnNumber].cellValue > obj2.cellDetails[columnNumber].cellValue){
-           if(sortingOrder === 'Ascending') return 1;
-           else return -1;
-        }else{
-           if(sortingOrder === 'Descending') return 1;
-           else return -1;
-        }
-    })
-    updateTableData(tableState)
-    console.log({sortingOrder,columnNumber})
-})
+tBody.addEventListener("keyup", (event) => {
+  const [rowNumber, columnNumber] = event.target.id.split("-"); // 2-3
+  tableState.body[rowNumber].columnDetails[columnNumber].cellValue =
+    event.target.value;
+  localStorage.setItem(LOCAL_STORAGE_TABLE_KEY, JSON.stringify(tableState));
+});
 
-const createSortingFormElements = () =>{
-    // dropdown
-    tableState.header.forEach(columnHeader => {
-        const optionElement = document.createElement('option');
-        optionElement.setAttribute('value', columnHeader.columnName+ "-" + columnHeader.columnNumber)
-        optionElement.innerText = columnHeader.columnName
-        sortingDropdown.append(optionElement);
-    })
+tHead.addEventListener("keyup", (event) => {
+  if (event.target.type === "search") return;
+  // this syntax is called object destructuring of array
+  const { 1: columnNumber } = event.target.id.split("-"); // id = "0-3" => after .split => [0, 3]
+  tableState.header[columnNumber].columnName = event.target.value;
+  localStorage.setItem(LOCAL_STORAGE_TABLE_KEY, JSON.stringify(tableState));
+});
+
+function createSortForm(element) {
+  const optionElement = document.createElement("option");
+  optionElement.setAttribute("id", "ColumnNameList");
+  optionElement.innerText = element.columnName;
+  optionElement.value = element.columnName;
+  selectOption.append(optionElement);
 }
-tableState.header.length && tableState.body.length && createSortingFormElements();
 
+function updateTableDataInLocalStorage(tableStateData) {
+  if (!tableStateData) return;
+  localStorage.setItem(LOCAL_STORAGE_TABLE_KEY, JSON.stringify(tableStateData));
+  createTableUIFromLocalStorage();
+}
 
-thead.addEventListener("keyup", (event) => {
-// isme sirf colnum ko update kr rhe hai to agr first indx pe kuch nhi denge to vo humesha 0 lega or kuch bhi kroi to 0th pe hi update krenge
-const [rowNumber,columnNumber] = event.target.id.split("-");
-tableState.header[columnNumber].columnName=event.target.value;
-updateTableData()
-});
+function clearTableUI() {
+  tHead.innerHTML = "";
+  tBody.innerHTML = "";
+  selectOption.innerHTML = "";
+}
 
-tbody.addEventListener("keyup", (event) => {
-// split se array mil rha hai
-const [rowNumber,columnNumber] = event.target.id.split("-")
-tableState.body[rowNumber].cellDetails[columnNumber].cellValue = event.target.value;
-console.log({tableState});
-updateTableData()
-});
+function getCellTextAreaElement(cellValue, cellAddress) {
+  const textAreaElement = document.createElement("textarea");
+  textAreaElement.setAttribute("id", cellAddress);
+  textAreaElement.setAttribute("placeholder", `Cell ${cellAddress}`);
+  textAreaElement.setAttribute("type", "text");
+  textAreaElement.value = cellValue;
+  return textAreaElement;
+}
 
-function createTableUI() {
-    thead.innerHTML = "";
-    tbody.innerHTML = "";
-    // to create column
-    for (const columnText of tableState.header) {
-      const th = document.createElement(columnText.elementType);
-      const columnInput = createColumnInput(columnText.columnNumber);
-      columnInput.value = columnText.columnName;
-      const searchElement = document.createElement('input');
-      searchElement.innerText = 'search'
-      searchElement.placeholder = 'search ' + columnText.columnName
-      th.append(columnInput);
-      th.append(searchElement);
-      thead.append(th);
-    }
-    //   to add row value
-    for (const rowText of tableState.body) {
-      const tr = document.createElement(rowText.elementType);
-      for (const rowData of rowText.cellDetails) {
-        const td = document.createElement(rowData.elemType);
-        const inputElement = createRowInput(rowData.rowNumber,rowData.columnNumber);
-        //   inputElement.setAttribute("value", rowData.value);
-  
-        inputElement.value = rowData.cellValue;
-        // console.log(inputElement.value)
-        td.append(inputElement);
-        tr.append(td);
-      }
-      tbody.append(tr);
-    }
-    //   jb ui dikha rhe hai tabhi localStorage funciton ko call kr denge
-    // updateTableData();
+function getColumnNameInputElement(columnName, cellAddress) {
+  const columnNameInputElement = document.createElement("input");
+  columnNameInputElement.value = columnName;
+  columnNameInputElement.setAttribute("id", cellAddress);
+  columnNameInputElement.draggable = true;
+  columnNameInputElement.ondragstart = function(e){
+        console.log({e, id: e.target.id})
+        e.dataTransfer.setData('text/plain',e.target.id)
   }
-  createTableUI();
+  return columnNameInputElement;
+}
 
-function addNewColoumn() {
-    const headerObj = {
-        elementType: "th",
-        columnName: "",
-        columnNumber: tableState.header.length,
-        sort: undefined,
+function getColumnSearchInputElement(columnNumber) {
+  const columnSearchInputElement = document.createElement("input");
+  columnSearchInputElement.setAttribute("id", `search-${columnNumber}`);
+  columnSearchInputElement.setAttribute("type", "search");
+  columnSearchInputElement.onkeyup = function columnSearch(e) {
+    const searchInput = e.target.value;
+    const tableDataFromLocalStorage = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_TABLE_KEY)
+    );
+    tableState.body = tableDataFromLocalStorage.body.filter((rowObject) => {
+      return rowObject.columnDetails[columnNumber].cellValue
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+    });
+    updateTableBodyData(tableState.body);
+  };
+  return columnSearchInputElement;
+}
+
+function createTableUIFromLocalStorage() {
+  clearTableUI();
+
+  tableState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TABLE_KEY));
+  tableState.header.forEach((element) => {
+    createSortForm(element);
+    const columnElement = document.createElement(element.elementType);
+// drag-drop column
+    columnElement.ondragover = function(event){
+        event.preventDefault()
     };
-    tableState.header.push(headerObj);
-    tableState.body.forEach((rowObj, idx) => {
-        rowObj.cellDetails.push({
-      elemType: "td",
-    //   headerObj ma push hogaya hai vaha se lenge colNumber
+    columnElement.ondrop = function(event){
+    const droppedElementIndex = event.dataTransfer.getData('text/plain').split('-')[1]
+    const dropZoneIndex = event.target.id.split('-')[1]
+    let swapValue = tableState.header[droppedElementIndex].columnName;
+    tableState.header[droppedElementIndex].columnName = tableState.header[dropZoneIndex].columnName;
+    tableState.header[dropZoneIndex].columnName = swapValue
+    updateTableDataInLocalStorage(tableState)
+    }
+
+    const columnNameInputElement = getColumnNameInputElement(
+      element.columnName,
+      `0-${element.columnNumber}`
+    );
+    columnElement.append(columnNameInputElement);
+
+    const columnSearchInputElement = getColumnSearchInputElement(
+      element.columnNumber
+    );
+    columnElement.append(columnSearchInputElement);
+
+    tHead.append(columnElement);
+  });
+
+  tableState.body.forEach((element) => {
+    const rowElement = document.createElement(element.elementType);
+    element.columnDetails.forEach((cellDetail) => {
+      const tdElement = document.createElement(cellDetail.elementType);
+      tdElement.ondragover = function(event){
+        event.preventDefault()
+    };
+    
+    tdElement.ondrop = function(event){
+    const [row , column] = event.dataTransfer.getData('text/plain').split('-')
+    const [rowZone , columnZone] = event.target.id.split('-')  
+    // console.log({columnDetails})
+    const swapRowValue = tableState.body[row].columnDetails[column].cellValue
+    tableState.body[row].columnDetails[column].cellValue  = tableState.body[rowZone].columnDetails[columnZone].cellValue
+    tableState.body[rowZone].columnDetails[columnZone].cellValue =  swapRowValue
+    updateTableDataInLocalStorage(tableState)
+    }
+      const textAreaElement = getCellTextAreaElement(
+        cellDetail.cellValue,
+        `${cellDetail.rowNumber}-${cellDetail.columnNumber}`
+      );
+      tdElement.append(textAreaElement);
+      rowElement.append(tdElement);
+    });
+    tBody.append(rowElement);
+  });
+}
+
+function addCellsInEachRowForNewColumn(columnNumber) {
+  tableState.body.forEach((element, idx) => {
+    const tdObject = {
+      elementType: "td",
+      columnNumber: columnNumber,
+      rowNumber: idx,
+      cellValue: `Cell ${idx} - ${columnNumber}`,
+    };
+    element.columnDetails.push(tdObject);
+  });
+}
+
+function addNewColumn() {
+  const headerObj = {
+    elementType: "th",
+    columnName: `Column ${tableState.header.length}`,
+    columnNumber: tableState.header.length,
+    sort: "",
+  };
+  tableState.header.push(headerObj);
+  addCellsInEachRowForNewColumn(headerObj.columnNumber);
+  updateTableDataInLocalStorage(tableState);
+}
+
+function addCellsInEachColumnForNewRow(bodyRowObject) {
+  tableState.header.forEach((headerObj) => {
+    bodyRowObject.columnDetails.push({
+      elementType: "td",
       columnNumber: headerObj.columnNumber,
-      rowNumber: idx + 1,
-      cellValue: "",
+      rowNumber: bodyRowObject.rowNumber,
+      cellValue: `Cell ${bodyRowObject.rowNumber} - ${headerObj.columnNumber}`,
     });
   });
-  createTableUI(tableState);
+  return bodyRowObject;
 }
 
 function addNewRow() {
-
-    const bodyObj = {
-      elementType: "tr",
-      rowNumber: tableState.body.length,
-      cellDetails: [],
-    };
-    tableState.header.forEach((headElem) => {
-        // console.log(headElem)
-      bodyObj.cellDetails.push({
-        elemType: "td",
-        columnNumber: headElem.columnNumber,
-        rowNumber: bodyObj.rowNumber,
-        cellValue: "",
-      });
-    });
-    tableState.body.push(bodyObj);
-    createTableUI(tableState);
-  }
-
-function createColumnInput(columnNumber) {
-  const input = Object.assign(document.createElement("input"), {
-    id: `0-${columnNumber}`,
-    type: "text",
-    placeholder: "Enter Column",
-  });
-  return input;
+  const bodyRow = {
+    elementType: "tr",
+    rowNumber: tableState.body.length,
+    columnDetails: [],
+  };
+  tableState.body.push(addCellsInEachColumnForNewRow(bodyRow));
+  updateTableDataInLocalStorage(tableState);
 }
 
-function createRowInput(rowNumber, columnNumber) {
-    console.log(`${rowNumber}-${columnNumber}`)
-  const input = Object.assign(document.createElement("textarea"), {
-    id: `${rowNumber}-${columnNumber}`,
-    row: "10",
-    column: "10",
-    placeholder: "Enter row",
-  });
-  return input;
-}
-
-// to store table data in local Storage
-function updateTableData() {
+function syncUIWithLocalStorage() {
+  if (!localStorage.getItem(LOCAL_STORAGE_TABLE_KEY)) {
     localStorage.setItem(LOCAL_STORAGE_TABLE_KEY, JSON.stringify(tableState));
+  }
+  createTableUIFromLocalStorage();
+}
+
+function sortTableByColumn(event) {
+  event.preventDefault();
+  const selectedColumnName = event.target.columnsDropdown.value;
+  const sortingOrder = event.target.sort.value;
+
+  const columnNumber = tableState.header.find(
+    (headerObj) => headerObj.columnName === selectedColumnName
+  ).columnNumber;
+
+  tableState.body.sort((obj1, obj2) => {
+    if (
+      obj1.columnDetails[columnNumber].cellValue >
+      obj2.columnDetails[columnNumber].cellValue
+    ) {
+      if (sortingOrder === "ascending") return 1;
+      else return -1;
+    } else {
+      if (sortingOrder === "ascending") return -1;
+      else return 1;
+    }
+  });
+  updateTableBodyData(tableState.body);
+}
+
+function updateTableBodyData(tableBodyData) {
+  tableState.body = tableBodyData;
+  tBody.innerHTML = "";
+  tableState.body.forEach((element) => {
+    const rowElement = document.createElement(element.elementType);
+    element.columnDetails.forEach((cellDetail) => {
+      const tdElement = document.createElement(cellDetail.elementType);
+      const textAreaElement = getCellTextAreaElement(
+        cellDetail.cellValue,
+        `${cellDetail.rowNumber}-${cellDetail.columnNumber}`
+      );
+      tdElement.append(textAreaElement);
+      rowElement.append(tdElement);
+    });
+    tBody.append(rowElement);
+ });
+
+//  for(const elem of tHead.children){
+//     console.log({elem})
+//     elem.draggable = true;
+// }
 }
