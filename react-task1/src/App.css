@@ -1,0 +1,37 @@
+.form{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+.input{
+  padding: 10px 20px;
+}
+.card-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.card{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-left: 10px;
+  height:40vh;
+  width:40vh;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.153);
+}
+.btn{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: .5px solid black;
+  background-color: rgb(5, 173, 239);
+  color: whitesmoke;
+  cursor: pointer;
+}
+.delete{
+  font-size: 1.5vmax;
+  cursor: pointer;
+}
