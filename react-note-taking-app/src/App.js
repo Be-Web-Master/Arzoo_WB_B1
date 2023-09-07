@@ -19,6 +19,9 @@ function NoteTakingApp() {
         return id !== idx
       })
      })
+     setModal(false)
+     setTitle('')
+     setDisc('')
   }
   const editNotes =(idx) =>{
      setTitle(notes[idx].title);
@@ -60,7 +63,7 @@ function NoteTakingApp() {
         }}>
         <input className='input' type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
         <textarea placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
-        <button className='btn' type="submit"  onClick={handleSubmit}>Submit</button>
+        <button className='btn' type="submit"  >Update</button>
       </form>
       </div>
       }
