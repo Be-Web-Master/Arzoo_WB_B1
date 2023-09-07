@@ -1,30 +1,36 @@
 import { useState } from "react";
 import {InputForm} from "./InputForm";
 import { DataList,dataArray } from "./DataList";
+import { UseEffectComp } from "./UseEffect";
 const ReactComp = () => {
   const [count, setCount] = useState(0)
   const increaseCount = ()=>{
       setCount(count+1);
   }
-  return <div>
-  <button id="add" onClick={increaseCount}>+</button>
+   return (
+    <>
+      <UseEffectComp/>
+    </>
+   )
+  // <div>
+  // <button id="add" onClick={increaseCount}>+</button>
 
-  <span>Count : {count}</span>
+  // <span>Count : {count}</span>
 
-  <button id="subtract" onClick={()=>{setCount(count-1)}}>-</button>
+  // <button id="subtract" onClick={()=>{setCount(count-1)}}>-</button>
 
-  <InputForm rcCount={count}>
-    {count > 5 ? <Comp1 compCount={count*3000}/> : <Comp1 compCount={count*1000}/>}
+  // <InputForm rcCount={count}>
+  //   {count > 5 ? <Comp1 compCount={count*3000}/> : <Comp1 compCount={count*1000}/>}
 
-    {count > 5 && <div>Hello from Div</div>}
+  //   {count > 5 && <div>Hello from Div</div>}
 
-    Not in div
-  </InputForm>
-   {dataArray.map((obj,idx)=>{
-     const {a, b} =obj;
-     return <DataList order={idx+1} a={a} b={b} />
-   })}
-  </div>;
+  //   Not in div
+  // </InputForm>
+  //  {dataArray.map((obj,idx)=>{
+  //    const {a, b} =obj;
+  //    return <DataList order={idx+1} a={a} b={b} />
+  //  })}
+  // </div>;
 }
 
 const Comp1 = (props)=>{
