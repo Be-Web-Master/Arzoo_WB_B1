@@ -2,16 +2,22 @@ import { useState } from "react";
 import {InputForm} from "./InputForm";
 import { DataList,dataArray } from "./DataList";
 import { UseEffectComp } from "./UseEffect";
+import { UseRefDemo } from "./UseRefDemo";
+import { UseContextDemo } from "./useContextDemo";
 const ReactComp = () => {
-  const [count, setCount] = useState(0)
-  const increaseCount = ()=>{
-      setCount(count+1);
-  }
-   return (
-    <>
-      <UseEffectComp/>
-    </>
-   )
+    return(<>
+        {/* <UseRefDemo/> */}
+        <UseContextDemo/>
+    </>);
+  // const [count, setCount] = useState(0)
+  // const increaseCount = ()=>{
+  //     setCount(count+1);
+  // }
+  //  return (
+  //   <>
+  //     <UseEffectComp/>
+  //   </>
+  //  )
   // <div>
   // <button id="add" onClick={increaseCount}>+</button>
 
@@ -33,8 +39,8 @@ const ReactComp = () => {
   // </div>;
 }
 
-const Comp1 = (props)=>{
-const {compCount} = props;
-return <div>From Comp1: {compCount}</div>
-}
+// const Comp1 = (props)=>{
+// const {compCount} = props;
+// return <div>From Comp1: {compCount}</div>
+// }
 export default ReactComp;
