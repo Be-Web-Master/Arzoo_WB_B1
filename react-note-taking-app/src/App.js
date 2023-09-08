@@ -30,17 +30,17 @@ function NoteTakingApp() {
   }
   return (
     <div>
-      <h1>Create Notes</h1>
+      {/* <h1>Create Notes</h1> */}
       <form 
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
         }}>
         <input className='input' type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-        <textarea placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
+        <textarea className='textarea' placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
         <button className='btn' type="submit"  onClick={handleSubmit}>Submit</button>
       </form>
-      <hr />
+
       <div className="Notes">
          {notes.map((notes,idx)=>{
             return <div className="note" key={idx}>
@@ -54,15 +54,15 @@ function NoteTakingApp() {
          })}
       </div>
 
-      {modal && <div>
-        <h1>Edit Notes</h1>
+      {modal && <div className='editmodal'>
         <form 
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
         }}>
+        <h1>Edit Notes</h1>
         <input className='input' type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-        <textarea placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
+        <textarea className='textarea' placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
         <button className='btn' type="submit"  >Update</button>
       </form>
       </div>
