@@ -28,6 +28,9 @@ function NoteTakingApp() {
      setDisc(notes[idx].disc);
      setModal(true);
   }
+  // const removeModal = ()=>{
+  //    const index = notes.findIndex((note)=> note.id === )
+  // }
   return (
     <div>
       {/* <h1>Create Notes</h1> */}
@@ -38,7 +41,7 @@ function NoteTakingApp() {
         }}>
         <input className='input' type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
         <textarea className='textarea' placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
-        <button className='btn' type="submit"  onClick={handleSubmit}>Submit</button>
+        <button className='btn' type="submit"  onClick={handleSubmit}  disabled={!(title && disc)}>Submit</button>
       </form>
 
       <div className="Notes">
@@ -63,7 +66,7 @@ function NoteTakingApp() {
         <h1>Edit Notes</h1>
         <input className='input' type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
         <textarea className='textarea' placeholder='Discription' cols="50" rows="4" value={disc} onChange={(e)=>{setDisc(e.target.value)}}></textarea>
-        <button className='btn' type="submit"  >Update</button>
+        <button className='btn' type="submit">Update</button>
       </form>
       </div>
       }
